@@ -1,0 +1,22 @@
+import json
+import pandas as pd
+
+
+context_str = dbutils.notebook.entry_point.getDbutils().notebook().getContext().toJson()
+context = json.loads(context_str)
+#print(context)
+run_id_obj = context.get('currentRunId', {})
+run_id = run_id_obj.get('id', None) if run_id_obj else None
+job_id = context.get('tags', {}).get('jobId', None)
+
+print(f'Run Id : {run_id}')
+
+print(f'Job Id : {job_id}')
+ 
+run_parameters = dbutils.notebook.entry_point.getCurrentBindings()
+
+param_dict =   dict(run_parameters)  # Java Map to dict
+
+param_df = pd.DataFrame(param_dict, index=[0])  
+
+print(param_df)
