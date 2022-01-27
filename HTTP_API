@@ -1,0 +1,36 @@
+import requests
+
+import json
+
+DOMAIN ='XXXX.azuredatabricks.net'
+
+TOKEN  = 'XXXXXXXXXX'
+
+BASE_URL = 'https://%s/api/2.1/jobs/run-now' % (DOMAIN)
+
+
+# We start the test remote
+
+job_test = requests.post(BASE_URL,
+
+                             json={'job_id': 19,
+
+                                    "notebook_params": {
+
+                                              'company':'DD',
+
+                                              'user_ref':'KAZI',
+
+                                              'equipment':'pipe',
+
+                                              'area':'water',
+
+                                              'idvideo':'ww.mp4',
+                                                
+                                              'model_id' : 'modelAI_1.0'}
+
+                                            },
+
+                             headers={'Authorization': 'Bearer %s' % TOKEN})
+
+print(job_test.content)
