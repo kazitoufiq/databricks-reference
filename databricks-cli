@@ -1,0 +1,29 @@
+pip install databricks-cli
+
+databricks
+
+databricks configure -h
+
+databricks configure --token
+(provide url and token) 
+
+databricks fs ls
+
+databricks fs ls -l dbfs:/FileStore
+
+databricks fs mkdirs dbfs:/FileStore/tables/test_folder
+
+databricks fs rm dbfs:/FileStore/tables/test_folder
+
+databricks fs rm -r dbfs:/FileStore/tables/test_folder  (to delete non-empty folder) 
+
+
+databricks fs cp datarobot_mlops.PNG dbfs:/FileStore/tables  (from local machine to dbfs) - only cp is allowed, not mv from local to dbfs
+
+
+databricks fs cp dbfs:/FileStore/tables/datarobot_mlops.PNG dbfs:/FileStore/data.png  (cp from dbfs to dbfs)
+databricks fs mv dbfs:/FileStore/tables/datarobot_mlops.PNG dbfs:/FileStore/datarobot_mlops.PNG (mv from dbfs to dbfs)
+
+databricks fs cp /c/Users/twadud/OneDrive/Documents/retail_db dbfs:/public/retail_db --recursive  [copy folder with all the contents to dbfs folder]
+
+databricks fs ls -l dbfs:/public/retail_db
